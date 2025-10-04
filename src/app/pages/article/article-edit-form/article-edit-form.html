@@ -1,0 +1,104 @@
+
+<section>
+  <div class="text-center pb-5">
+    <h4
+      class="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased"
+    >
+      Edición del articulo: {{articleSelected?.title}}
+    </h4>
+    <p
+      class="mt-1 block font-sans text-base font-normal leading-relaxed text-gray-700 antialiased"
+    >
+      Introduzca los datos correspondientes para editar este artículo.
+    </p>
+  </div>
+  <form
+    class="max-w-sm mx-auto"
+    [formGroup]="articleForm"
+    (ngSubmit)="saveUpdatedArticle()"
+  >
+    <div class="mb-5">
+      <label
+        for="title"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Título</label
+      >
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        placeholder="{{articleSelected?.title}}"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+  
+    </div>
+    <div class="mb-5">
+      <label
+        for="description"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Descripción</label
+      >
+      <input
+        type="text"
+        id="description"
+        formControlName="description"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="{{articleSelected?.description}}"
+      />
+    </div>
+    <div class="mb-5">
+      <label
+        for="totalPages"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Total de Páginas</label
+      >
+      <input
+        type="number"
+        id="totalPages"
+        formControlName="totalPages"
+        placeholder="{{articleSelected?.totalPages}}"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+       @if (articleForm.get('totalPages')?.errors?.['min'] &&
+      articleForm.get('totalPages')?.touched) {
+      <div class="mt-2 text-sm text-red-600 dark:text-red-500">
+        El total de páginas no debe ser menor a 1
+      </div>
+      }
+    </div>
+    <div class="mb-5">
+      <label
+        for="publicationDate"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Publicación de artículo</label
+      >
+      <input
+        type="date"
+        id="publicationDate"
+        formControlName="publicationDate"
+        placeholder="{{articleSelected?.publicationDate}}"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      />
+      @if (articleForm.get('publicationDate')?.errors?.['futureDate'] &&
+      articleForm.get('publicationDate')?.touched) {
+      <div class="mt-2 text-sm text-red-600 dark:text-red-500">
+        La publicación no debe ser futura
+      </div>
+      }
+    </div>
+    <div class="flex gap-4 justify-end">
+      <button
+        class="border-2 border-blue-700 px-4 py-2 font-medium rounded-lg hover:bg-gray-200"
+        routerLink="/articles"
+      >
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Guardar cambios
+      </button>
+    </div>
+  </form>
+</section>

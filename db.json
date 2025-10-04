@@ -1,0 +1,39 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Universo I",
+      "description": "Información de distintos autores acerca del universo",
+      "totalPages": 299,
+      "publicationDate": "2007-12-03"
+    },
+    {
+      "id": 2,
+      "title": "Tecnología del Futuro",
+      "description": "Un vistazo a las tendencias tecnológicas del próximo siglo",
+      "totalPages": 412,
+      "publicationDate": "2020-05-21"
+    },
+    {
+      "id": 3,
+      "title": "Historia del Arte",
+      "description": "Un recorrido por las corrientes artísticas más influyentes",
+      "totalPages": 350,
+      "publicationDate": "2015-08-14"
+    },
+    {
+      "id": 4,
+      "title": "Inteligencia Artificial",
+      "description": "Cómo la IA está cambiando la forma en que vivimos",
+      "totalPages": 287,
+      "publicationDate": "2021-03-10"
+    },
+    {
+      "id": 5,
+      "title": "El Océano Profundo",
+      "description": "Descubrimientos recientes en las profundidades marinas",
+      "totalPages": 198,
+      "publicationDate": "2018-11-30"
+    }
+  ]
+}
