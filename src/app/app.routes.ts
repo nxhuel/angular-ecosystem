@@ -4,6 +4,8 @@ import { HomeMain } from './pages/home/home-main/home-main';
 import { ArticleDetails } from './pages/article/article-details/article-details';
 import { ArticleForm } from './pages/article/article-form/article-form';
 import { ArticleEditForm } from './pages/article/article-edit-form/article-edit-form';
+import { ChatMain } from './pages/chat/chat-main/chat-main';
+import { ChatFormUsername } from './pages/chat/chat-form-username/chat-form-username';
 
 export const routes: Routes = [
   { path: '', component: HomeMain },
@@ -22,6 +24,13 @@ export const routes: Routes = [
   {
     path: 'articles-edit-form/:id',
     component: ArticleEditForm
+  },
+  {
+    path: 'chat',
+    component: ChatFormUsername
+  },
+  {
+    path: 'chat/:userId', component: ChatMain
   },
   { path: '', redirectTo: '', pathMatch: 'full' }, // Redirección por defecto
   { path: '**', redirectTo: '' }, // Ruta comodín (404)

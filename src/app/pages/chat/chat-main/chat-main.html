@@ -1,0 +1,79 @@
+<!-- <div class="chat_window">
+  <div class="top_menu">
+    <div class="title">Globalchat</div>
+  </div>
+  <ul class="messages">
+    @for (item of messageList; track $index) {
+    <li
+      class="message right"
+      [ngClass]="{'left': item.message_side === 'receiver', 'right': item.message_side === 'sender'}"
+    >
+      <div class="avatar"></div>
+      <div class="text_wrapper">
+        <p>{{item.from }}</p> 
+        <p>{{item.timestamp | date:'h:mm a'}}</p>
+        
+        <div class="text">{{item.message}}</div>
+      </div>
+    </li>
+    }
+  </ul>
+  <div class="bottom_wrapper clearfix">
+    <div class="message_input_wrapper">
+      <input
+        class="message_input"
+        placeholder="Message..."
+        [(ngModel)]="messageInput"
+      />
+    </div>
+    <div class="send_message" (click)="sendMessage()">
+      <div class="icon"></div>
+      <div class="text">Send</div>
+    </div>
+  </div>
+</div> -->
+
+<div class="flex flex-col h-[700px] w-full  p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+  
+  <!-- Título / header del chat -->
+  <div class="font-bold text-lg mb-2">Chat de la comunidad</div>
+
+  <!-- Contenedor de mensajes con scroll -->
+  <div class="flex-1 flex flex-col gap-4 overflow-y-auto p-2 bg-white dark:bg-gray-700 rounded-lg">
+    @for (item of messageList; track $index) {
+      <div
+        class="flex flex-col max-w-[70%] p-2 rounded-lg"
+        [ngClass]="{
+          'self-end bg-blue-500 text-white': item.message_side === 'sender',
+          'self-start bg-gray-200 text-gray-900': item.message_side === 'receiver'
+        }"
+      >
+        <!-- Header: name + timestamp -->
+        <div class="flex items-center justify-between mb-1 gap-2">
+          <span class="text-sm font-semibold">{{ item.from }}</span>
+          <span class="text-xs text-gray-400">{{ item.timestamp | date:'h:mm a' }}</span>
+        </div>
+
+        <!-- Message text -->
+        <p class="text-sm">{{ item.message }}</p>
+      </div>
+    }
+  </div>
+
+  <!-- Input -->
+  <div class="flex items-center gap-2 mt-2">
+    <input
+      type="text"
+      class="flex-1 p-2 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:text-white"
+      placeholder="Mensaje..."
+      [(ngModel)]="messageInput"
+      (keyup.enter)="sendMessage()"
+    />
+    <button
+      class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+      (click)="sendMessage()"
+    >
+      Enviar
+    </button>
+  </div>
+</div>
